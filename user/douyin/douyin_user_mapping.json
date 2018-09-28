@@ -1,0 +1,115 @@
+{
+  "user": {
+    "include_in_all": false,
+    "properties": {
+      "nickname_terms": {
+        "analyzer": "whitespace",
+        "type": "text",
+        "fields": {
+          "shingles": {
+            "analyzer": "my_shingle_analyzer",
+            "type": "text"
+          }
+        }
+      },
+      "signature": {
+        "type": "keyword"
+      },
+      "is_binded_weibo": {
+        "type": "integer"
+      },
+      "signature_terms": {
+        "analyzer": "whitespace",
+        "type": "text",
+        "fields": {
+          "shingles": {
+            "analyzer": "my_shingle_analyzer",
+            "type": "text"
+          }
+        }
+      },
+      "nickname": {
+        "type": "keyword"
+      },
+      "from": {
+        "type": "long"
+      },
+      "id": {
+        "type": "long"
+      },
+      "is_star": {
+        "type": "boolean"
+      },
+      "nickname_pinyin": {
+        "type": "keyword"
+      },
+      "live_verify": {
+        "type": "integer"
+      },
+      "weibo_verify": {
+        "type": "integer"
+      },
+      "create_time": {
+        "type": "keyword"
+      },
+      "weight": {
+        "properties": {
+          "total_post_count": {
+            "type": "long"
+          },
+          "visible_post_count": {
+            "type": "long"
+          },
+          "following_count": {
+            "type": "long"
+          },
+          "private_post_count": {
+            "type": "long"
+          },
+          "repined_count": {
+            "type": "long"
+          },
+          "follower_count": {
+            "type": "long"
+          },
+          "all_platforms_follower_count": {
+            "type": "long"
+          }
+        }
+      },
+      "short_id": {
+        "type": "long"
+      },
+      "is_verified": {
+        "type": "boolean"
+      },
+      "search_alias": {
+        "type": "keyword"
+      },
+      "user_rate": {
+        "type": "integer"
+      },
+      "enterprise_verify_reason": {
+        "type": "integer"
+      },
+      "need_recommend": {
+        "type": "integer"
+      },
+      "uniq_id": {
+        "type": "keyword"
+      },
+      "size": {
+        "type": "long"
+      },
+      "custom_verify": {
+        "type": "integer"
+      },
+      "aggs": {
+        "type": "object"
+      },
+      "status": {
+        "type": "integer"
+      }
+    }
+  }
+}

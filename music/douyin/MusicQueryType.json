@@ -1,0 +1,41 @@
+{
+  "query": {
+    "bool": {
+      "filter": [{
+        "terms": {
+          "source_platform": [22]
+        }
+      }],
+      "minimum_should_match": 1,
+      "should": [{
+        "function_score": {
+          "query": {
+            "query_string": {
+              "use_dis_max": "false",
+              "fields": ["title^9", "author^1"],
+              "query": "燃烧 我 的 卡路里"
+            }
+          },
+          "functions": [{
+            "field_value_factor": {
+              "field": "search_weight.title",
+              "missing": 1
+            }
+          }, {
+            "field_value_factor": {
+              "field": "search_weight.author",
+              "missing": 1
+            }
+          }, {
+            "field_value_factor": {
+              "field": "search_weight.album",
+              "missing": 1
+            }
+          }],
+          "score_mode": "multiply",
+          "boost_mode": "multiply"
+        }
+      }]
+    }
+  }
+}

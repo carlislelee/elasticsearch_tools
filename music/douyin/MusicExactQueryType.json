@@ -1,0 +1,98 @@
+{
+  "query": {
+    "bool": {
+      "should": [{
+        "match": {
+          "origin_author": {
+            "query": "燃烧我的卡路里",
+            "boost": 100
+          }
+        }
+      }, {
+        "match": {
+          "origin_title": {
+            "operator": "and",
+            "query": "燃烧我的卡路里",
+            "boost": 2
+          }
+        }
+      }, {
+        "match": {
+          "origin_album": {
+            "operator": "and",
+            "query": "燃烧我的卡路里",
+            "boost": 5
+          }
+        }
+      }, {
+        "match": {
+          "source_platform": {
+            "operator": "and",
+            "query": 22,
+            "boost": 40
+          }
+        }
+      }, {
+        "match": {
+          "source_platform": {
+            "operator": "and",
+            "query": 25,
+            "boost": 40
+          }
+        }
+      }, {
+        "range": {
+          "search_weight.user_count": {
+            "boost": 20,
+            "gte": 1,
+            "lte": 1000
+          }
+        }
+      }, {
+        "range": {
+          "search_weight.user_count": {
+            "boost": 30,
+            "gte": 1000
+          }
+        }
+      }],
+      "must": [{
+        "terms": {
+          "source_platform": [22]
+        }
+      }, {
+        "bool": {
+          "minimum_should_match": 1,
+          "should": [{
+            "match": {
+              "origin_author": {
+                "operator": "and",
+                "query": "燃烧我的卡路里"
+              }
+            }
+          }, {
+            "match": {
+              "origin_title": {
+                "operator": "and",
+                "query": "燃烧我的卡路里"
+              }
+            }
+          }, {
+            "match": {
+              "origin_album": {
+                "operator": "and",
+                "query": "燃烧我的卡路里"
+              }
+            }
+          }, {
+            "match_phrase": {
+              "title": {
+                "query": "燃烧 我 的 卡路里"
+              }
+            }
+          }]
+        }
+      }]
+    }
+  }
+}

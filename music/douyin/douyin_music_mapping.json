@@ -1,0 +1,146 @@
+{
+  "song": {
+    "include_in_all": false,
+    "properties": {
+      "origin_title": {
+        "type": "keyword"
+      },
+      "modify_time": {
+        "type": "long"
+      },
+      "title": {
+        "analyzer": "whitespace",
+        "type": "text",
+        "fields": {
+          "shingles": {
+            "analyzer": "my_shingle_analyzer",
+            "type": "text"
+          }
+        }
+      },
+      "source_uri": {
+        "type": "keyword"
+      },
+      "author_short_id": {
+        "type": "long"
+      },
+      "source_platform": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "ignore_above": 256,
+            "type": "keyword"
+          }
+        }
+      },
+      "pinyin_title_terms": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "ignore_above": 256,
+            "type": "keyword"
+          }
+        }
+      },
+      "source_platform_id": {
+        "type": "integer"
+      },
+      "update_time": {
+        "type": "long"
+      },
+      "char_title": {
+        "analyzer": "whitespace",
+        "type": "text",
+        "fields": {
+          "shingles": {
+            "analyzer": "my_shingle_analyzer",
+            "type": "text"
+          }
+        }
+      },
+      "id": {
+        "type": "long"
+      },
+      "lyrics": {
+        "analyzer": "whitespace",
+        "type": "text",
+        "fields": {
+          "shingles": {
+            "analyzer": "my_shingle_analyzer",
+            "type": "text"
+          }
+        }
+      },
+      "origin_album": {
+        "type": "keyword"
+      },
+      "pinyin_title": {
+        "type": "keyword"
+      },
+      "album": {
+        "analyzer": "whitespace",
+        "type": "text",
+        "fields": {
+          "shingles": {
+            "analyzer": "my_shingle_analyzer",
+            "type": "text"
+          }
+        }
+      },
+      "author": {
+        "analyzer": "whitespace",
+        "type": "text",
+        "fields": {
+          "shingles": {
+            "analyzer": "my_shingle_analyzer",
+            "type": "text"
+          }
+        }
+      },
+      "isrc": {
+        "type": "keyword"
+      },
+      "countries": {
+        "analyzer": "std_lower_analyzer",
+        "type": "text"
+      },
+      "labels": {
+        "type": "integer"
+      },
+      "search_weight": {
+        "properties": {
+          "user_count": {
+            "type": "long"
+          },
+          "author": {
+            "type": "long"
+          },
+          "title": {
+            "type": "long"
+          }
+        }
+      },
+      "source_platform_lable_id": {
+        "type": "keyword"
+      },
+      "explicit": {
+        "type": "boolean"
+      },
+      "origin_author": {
+        "type": "keyword"
+      },
+      "is_recommend": {
+        "type": "boolean"
+      },
+      "author_uniq_id": {
+        "type": "keyword"
+      },
+      "label_id": {
+        "type": "integer"
+      },
+      "status": {
+        "type": "integer"
+      }
+    }
+  }
+}

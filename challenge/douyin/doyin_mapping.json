@@ -1,0 +1,80 @@
+{
+  "aweme_challenge_v2": {
+    "include_in_all": false,
+    "properties": {
+      "content_pinyin_terms": {
+        "analyzer": "whitespace",
+        "type": "text",
+        "fields": {
+          "shingles": {
+            "analyzer": "my_shingle_analyzer",
+            "type": "text"
+          }
+        }
+      },
+      "create_time": {
+        "type": "long"
+      },
+      "content": {
+        "analyzer": "whitespace",
+        "type": "text",
+        "fields": {
+          "shingles": {
+            "analyzer": "my_shingle_analyzer",
+            "type": "text"
+          }
+        }
+      },
+      "content_pinyin": {
+        "type": "keyword"
+      },
+      "use_count": {
+        "type": "integer"
+      },
+      "origin_content": {
+        "type": "keyword"
+      },
+      "update_time": {
+        "type": "long"
+      },
+      "user_id": {
+        "type": "long"
+      },
+      "extra": {
+        "type": "keyword"
+      },
+      "is_recommend": {
+        "type": "boolean"
+      },
+      "id": {
+        "type": "long"
+      },
+      "char_content": {
+        "analyzer": "whitespace",
+        "type": "text",
+        "fields": {
+          "shingles": {
+            "analyzer": "my_shingle_analyzer",
+            "type": "text"
+          }
+        }
+      },
+      "desc": {
+        "analyzer": "whitespace",
+        "type": "text",
+        "fields": {
+          "shingles": {
+            "analyzer": "my_shingle_analyzer",
+            "type": "text"
+          }
+        }
+      },
+      "origin_desc": {
+        "type": "keyword"
+      },
+      "status": {
+        "type": "integer"
+      }
+    }
+  }
+}

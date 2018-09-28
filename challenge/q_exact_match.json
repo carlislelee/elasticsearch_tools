@@ -1,0 +1,50 @@
+{
+  "query": {
+    "function_score": {
+      "boost_mode": "sum",
+      "functions": [{
+        "field_value_factor": {
+          "factor": 16,
+          "field": "all_score_d",
+          "missing": 0,
+          "modifier": "sqrt"
+        }
+      }, {
+        "field_value_factor": {
+          "factor": 25,
+          "field": "week_score_d",
+          "missing": 0,
+          "modifier": "sqrt"
+        }
+      }],
+      "query": {
+        "bool": {
+          "disable_coord": true,
+          "filter": {
+            "term": {
+              "status": 1
+            }
+          },
+          "must": {
+            "dis_max": {
+              "queries": [{
+                "constant_score": {
+                  "boost": 50,
+                  "filter": {
+                    "term": {
+                      "content": {
+                        "boost": 1,
+                        "value": "vlogtikth"
+                      }
+                    }
+                  }
+                }
+              }]
+            }
+          }
+        }
+      },
+      "score_mode": "sum"
+    }
+  }
+}

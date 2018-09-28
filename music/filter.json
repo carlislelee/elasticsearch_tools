@@ -1,0 +1,28 @@
+{
+  "_source": {
+    "include": [
+      "_id",
+      "title",
+      "author",
+      "search_weight.user_count"
+    ]
+  },
+  "query": {
+    "bool": {
+      "disable_coord": true,
+      "filter": [{
+          "term": {
+            "status": 1
+          }
+        },
+        {
+          "range": {
+            "search_weight.user_count": {
+              "gt": 0
+            }
+          }
+        }
+      ]
+    }
+  }
+}

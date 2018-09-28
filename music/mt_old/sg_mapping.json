@@ -1,0 +1,94 @@
+{
+  "ugc_index_aweme_i18n_music_v1": {
+    "mappings": {
+      "song": {
+        "date_detection": false,
+        "properties": {
+          "album": {
+            "type": "text",
+            "analyzer": "normal_track",
+            "search_analyzer": "normal_track_search"
+          },
+          "author": {
+            "type": "text",
+            "analyzer": "normal_track",
+            "search_analyzer": "normal_track_search"
+          },
+          "author_id": {
+            "type": "integer"
+          },
+          "countries": {
+            "type": "text",
+            "analyzer": "std_lower_analyzer"
+          },
+          "explicit": {
+            "type": "boolean"
+          },
+          "extra": {
+            "type": "keyword",
+            "index": false
+          },
+          "hot_i": {
+            "type": "integer",
+            "index": false
+          },
+          "id": {
+            "type": "long"
+          },
+          "isrc": {
+            "type": "text"
+          },
+          "label_id": {
+            "type": "long"
+          },
+          "labels": {
+            "type": "long"
+          },
+          "long_author": {
+            "type": "long"
+          },
+          "modify_time": {
+            "type": "long"
+          },
+          "score_d": {
+            "type": "integer",
+            "index": false
+          },
+          "search_weight": {
+            "properties": {
+              "author": {
+                "type": "long"
+              },
+              "title": {
+                "type": "long"
+              },
+              "user_count": {
+                "type": "long"
+              }
+            }
+          },
+          "song_id": {
+            "type": "long"
+          },
+          "source_platform_id": {
+            "type": "integer"
+          },
+          "source_platform_lable_id": {
+            "type": "text"
+          },
+          "source_uri": {
+            "type": "keyword"
+          },
+          "status": {
+            "type": "long"
+          },
+          "title": {
+            "type": "text",
+            "analyzer": "normal_track",
+            "search_analyzer": "normal_track_search"
+          }
+        }
+      }
+    }
+  }
+}

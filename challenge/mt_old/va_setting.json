@@ -1,0 +1,68 @@
+{
+  "ugc_index_aweme_i18n_challenge_v1_reindex": {
+    "settings": {
+      "index": {
+        "routing": {
+          "allocation": {
+            "include": {
+              "name": "",
+              "tag": ""
+            },
+            "total_shards_per_node": "10"
+          }
+        },
+        "refresh_interval": "60s",
+        "number_of_shards": "10",
+        "translog": {
+          "durability": "async"
+        },
+        "provided_name": "ugc_index_aweme_i18n_challenge_v1_reindex",
+        "creation_date": "1534752745968",
+        "analysis": {
+          "filter": {
+            "edge_filter": {
+              "type": "edge_ngram",
+              "min_gram": "1",
+              "max_gram": "16"
+            }
+          },
+          "analyzer": {
+            "normal": {
+              "filter": [
+                "lowercase",
+                "edge_filter"
+              ],
+              "type": "custom",
+              "tokenizer": "whitespace"
+            },
+            "normal2": {
+              "filter": [
+                "lowercase"
+              ],
+              "tokenizer": "nedge"
+            },
+            "normal_search": {
+              "filter": [
+                "lowercase"
+              ],
+              "type": "custom",
+              "tokenizer": "whitespace"
+            }
+          },
+          "tokenizer": {
+            "nedge": {
+              "type": "edge_ngram",
+              "min_gram": "1",
+              "max_gram": "16"
+            }
+          }
+        },
+        "number_of_replicas": "5",
+        "uuid": "n2RUzquqRwuzjGAq2Aaa2Q",
+        "version": {
+          "created": "5050399"
+        }
+      }
+    }
+  }
+}

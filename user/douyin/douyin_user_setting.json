@@ -1,0 +1,64 @@
+{
+  "index": {
+    "search": {
+      "slowlog": {
+        "threshold": {
+          "fetch": {
+            "warn": "300ms",
+            "info": "200ms"
+          },
+          "query": {
+            "warn": "300ms",
+            "info": "200ms"
+          }
+        }
+      }
+    },
+    "refresh_interval": "60s",
+    "indexing": {
+      "slowlog": {
+        "threshold": {
+          "index": {
+            "warn": "300ms",
+            "info": "200ms"
+          }
+        }
+      }
+    },
+    "number_of_shards": "10",
+    "provided_name": "ugc_index_aweme_user_20180420",
+    "creation_date": "1524210413570",
+    "unassigned": {
+      "node_left": {
+        "delayed_timeout": "30m"
+      }
+    },
+    "analysis": {
+      "filter": {
+        "my_shingle_filter": {
+          "max_shingle_size": "2",
+          "min_shingle_size": "2",
+          "output_unigrams": "false",
+          "type": "shingle"
+        }
+      },
+      "analyzer": {
+        "my_shingle_analyzer": {
+          "filter": [
+            [
+              "my_shingle_filter",
+              "lowercase"
+            ]
+          ],
+          "type": "custom",
+          "tokenizer": "whitespace"
+        }
+      }
+    },
+    "number_of_replicas": "4",
+    "uuid": "p-r4EWWXS06kzJ3XFaPoqg",
+    "version": {
+      "created": "5050399"
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "challenge": {
+    "properties": {
+      "all_score_d": {
+        "type": "double"
+      },
+      "all_score_i": {
+        "type": "long"
+      },
+      "content": {
+        "type": "text",
+        "analyzer": "normal2"
+      },
+      "content_segment": {
+        "type": "text",
+        "fields": {
+          "length": {
+            "type": "token_count",
+            "analyzer": "normal"
+          }
+        },
+        "analyzer": "normal"
+      },
+      "create_time": {
+        "type": "long"
+      },
+      "desc": {
+        "type": "text"
+      },
+      "extra": {
+        "type": "keyword"
+      },
+      "id": {
+        "type": "long"
+      },
+      "origin_content": {
+        "type": "text",
+        "analyzer": "normal2"
+      },
+      "status": {
+        "type": "long"
+      },
+      "tag": {
+        "type": "text"
+      },
+      "update_time": {
+        "type": "long"
+      },
+      "user_id": {
+        "type": "long"
+      },
+      "week_score_d": {
+        "type": "double"
+      },
+      "week_score_i": {
+        "type": "long"
+      }
+    }
+  }
+}

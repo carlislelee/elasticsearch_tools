@@ -1,0 +1,67 @@
+{
+  "_source": {
+    "include": [
+      "_id",
+      "title",
+      "author",
+      "search_weight.user_count"
+    ]
+  },
+  "query": {
+    "function_score": {
+      "boost_mode": "sum",
+      "functions": [{
+        "field_value_factor": {
+          "factor": 0.2,
+          "field": "score_d",
+          "missing": 0
+        }
+      }, {
+        "filter": {
+          "term": {
+            "source_platform_id": 74
+          }
+        },
+        "weight": 1
+      }],
+      "query": {
+        "bool": {
+          "disable_coord": true,
+          "filter": [{
+            "term": {
+              "explicit": false
+            }
+          }, {
+            "terms": {
+              "countries": ["cn", "unlimited"]
+            }
+          }, {
+            "term": {
+              "status": 1
+            }
+          }],
+          "must": {
+            "dis_max": {
+              "queries": [{
+                "match": {
+                  "title": {
+                    "boost": 0.7,
+                    "query": "justin bieber"
+                  }
+                }
+              }, {
+                "match": {
+                  "author": {
+                    "boost": 0.7,
+                    "query": "justin bieber"
+                  }
+                }
+              }]
+            }
+          }
+        }
+      },
+      "score_mode": "sum"
+    }
+  }
+}

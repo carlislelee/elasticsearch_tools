@@ -1,0 +1,110 @@
+{
+  "query": {
+    "function_score": {
+      "boost_mode": "sum",
+      "functions": [
+        {
+          "field_value_factor": {
+            "factor": 0.3,
+            "field": "fans_score_d",
+            "missing": 0
+          }
+        },
+        {
+          "field_value_factor": {
+            "factor": 2,
+            "field": "weight.is_auth",
+            "missing": 0
+          }
+        },
+        {
+          "field_value_factor": {
+            "factor": 0.0001,
+            "field": "weight.post_count",
+            "missing": 0,
+            "modifier": "log1p"
+          }
+        },
+        {
+          "field_value_factor": {
+            "factor": 0.05,
+            "field": "porn_credit",
+            "missing": 0
+          }
+        }
+      ],
+      "query": {
+        "bool": {
+          "disable_coord": true,
+          "filter": {
+            "term": {
+              "status": 1
+            }
+          },
+          "must": {
+            "dis_max": {
+              "queries": [
+                {
+                  "match": {
+                    "nickname_terms": {
+                      "boost": 1,
+                      "query": "theoreocat"
+                    }
+                  }
+                },
+                {
+                  "match": {
+                    "uniq_id": {
+                      "boost": 1,
+                      "query": "theoreocat"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "should": {
+            "bool": {
+              "disable_coord": true,
+              "should": [
+                {
+                  "match": {
+                    "following_lt": {
+                      "boost": 0.5,
+                      "query": 0
+                    }
+                  }
+                },
+                {
+                  "match": {
+                    "friends_lt": {
+                      "boost": 0.5,
+                      "query": 0
+                    }
+                  }
+                },
+                {
+                  "match": {
+                    "may_be_friends_lt": {
+                      "boost": 0.5,
+                      "query": 0
+                    }
+                  }
+                },
+                {
+                  "match": {
+                    "country": {
+                      "boost": 0.1,
+                      "query": "US"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "score_mode": "sum"
+    }
+  }
+}

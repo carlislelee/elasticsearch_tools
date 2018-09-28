@@ -1,0 +1,76 @@
+{
+  "index": {
+    "search": {
+      "slowlog": {
+        "threshold": {
+          "fetch": {
+            "warn": "300ms",
+            "info": "200ms"
+          },
+          "query": {
+            "warn": "300ms",
+            "info": "200ms"
+          }
+        }
+      }
+    },
+    "refresh_interval": "60s",
+    "indexing": {
+      "slowlog": {
+        "threshold": {
+          "index": {
+            "warn": "300ms",
+            "info": "200ms"
+          }
+        }
+      }
+    },
+    "number_of_shards": "5",
+    "provided_name": "pgc_index_music_20180615",
+    "creation_date": "1529056313369",
+    "unassigned": {
+      "node_left": {
+        "delayed_timeout": "30m"
+      }
+    },
+    "analysis": {
+      "filter": {
+        "edge_filter": {
+          "max_shingle_size": "36",
+          "min_shingle_size": "1",
+          "type": "edge_ngram"
+        },
+        "my_shingle_filter": {
+          "max_shingle_size": "2",
+          "min_shingle_size": "2",
+          "output_unigrams": "false",
+          "type": "shingle"
+        }
+      },
+      "analyzer": {
+        "my_shingle_analyzer": {
+          "filter": [
+            [
+              "my_shingle_filter",
+              "lowercase"
+            ]
+          ],
+          "type": "custom",
+          "tokenizer": "whitespace"
+        },
+        "std_lower_analyzer": {
+          "filter": {
+            "value": "lowercase"
+          },
+          "type": "custom",
+          "tokenizer": "standard"
+        }
+      }
+    },
+    "number_of_replicas": "7",
+    "uuid": "3q4OjVeETACjFuz_QTmcZA",
+    "version": {
+      "created": "5050399"
+    }
+  }
+}

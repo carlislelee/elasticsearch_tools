@@ -1,0 +1,39 @@
+{
+  "query": {
+    "bool": {
+      "minimum_should_match": 1,
+      "should": [{
+        "function_score": {
+          "query": {
+            "bool": {
+              "minimum_should_match": 1,
+              "should": [{
+                "query_string": {
+                  "fields": ["nickname_terms"],
+                  "default_operator": "AND",
+                  "query": "花 姐"
+                }
+              }]
+            }
+          },
+          "functions": [{
+            "field_value_factor": {
+              "field": "weight.follower_count",
+              "modifier": "log2p",
+              "missing": 1
+            }
+          }, {
+            "field_value_factor": {
+              "field": "weight.visible_post_count",
+              "modifier": "log2p",
+              "missing": 1
+            }
+          }],
+          "max_boost": 10,
+          "score_mode": "sum",
+          "boost_mode": "multiply"
+        }
+      }]
+    }
+  }
+}

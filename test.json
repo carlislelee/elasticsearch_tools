@@ -1,0 +1,41 @@
+{
+  "index": {
+    "routing": {
+      "allocation": {
+        "include": {
+          "name": ""
+        },
+        "total_shards_per_node": "10"
+      }
+    },
+    "refresh_interval": "600s",
+    "number_of_shards": "10",
+    "analysis": {
+      "filter": {
+        "edge_filter": {
+          "type": "edge_ngram",
+          "min_gram": "1",
+          "max_gram": "36"
+        }
+      },
+      "analyzer": {
+        "normal_track_search": {
+          "filter": ["lowercase"],
+          "type": "custom",
+          "tokenizer": "standard"
+        },
+        "std_lower_analyzer": {
+          "filter": ["lowercase"],
+          "type": "custom",
+          "tokenizer": "standard"
+        },
+        "normal_track": {
+          "filter": ["lowercase", "edge_filter"],
+          "type": "custom",
+          "tokenizer": "standard"
+        }
+      }
+    },
+    "number_of_replicas": "1"
+  }
+}

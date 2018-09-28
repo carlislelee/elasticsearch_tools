@@ -1,0 +1,12 @@
+{
+  "query": {
+    "bool": {
+      "disable_coord": true,
+      "must": {
+        "term": {
+          "_id": "6600801725912842246"
+        }
+      }
+    }
+  }
+}

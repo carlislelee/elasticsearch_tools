@@ -1,0 +1,34 @@
+{
+  "query": {
+    "bool": {
+      "minimum_should_match": 0,
+      "must": [{
+        "bool": {
+          "must": [{
+            "query_string": {
+              "minimum_should_match": "60%",
+              "fields": ["content"],
+              "query": "一起 学 猫叫"
+            }
+          }, {
+            "query_string": {
+              "minimum_should_match": "75%",
+              "fields": ["char_content"],
+              "query": "一 起 学 猫 叫"
+            }
+          }, {
+            "query_string": {
+              "fields": ["content"],
+              "query": "猫叫"
+            }
+          }, {
+            "query_string": {
+              "fields": ["content"],
+              "query": "猫叫"
+            }
+          }]
+        }
+      }]
+    }
+  }
+}

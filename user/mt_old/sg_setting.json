@@ -1,0 +1,61 @@
+
+{
+  "ugc_index_aweme_i18n_user_v1": {
+    "settings": {
+      "index": {
+        "routing": {
+          "allocation": {
+            "include": {
+              "name": "",
+              "tag": ""
+            },
+            "total_shards_per_node": "10"
+          }
+        },
+        "refresh_interval": "600s",
+        "number_of_shards": "20",
+        "translog": {
+          "durability": "async"
+        },
+        "provided_name": "ugc_index_aweme_i18n_user_v1",
+        "creation_date": "1532425849996",
+        "analysis": {
+          "filter": {
+            "word_delimiter_filter": {
+              "split_on_numerics": "true",
+              "generate_word_parts": "true",
+              "type": "word_delimiter",
+              "generate_number_parts": "true"
+            },
+            "edge_ngram_filter": {
+              "type": "edge_ngram",
+              "min_gram": "1",
+              "max_gram": "16"
+            }
+          },
+          "analyzer": {
+            "text_analyzer": {
+              "filter": [
+                "edge_ngram_filter"
+              ],
+              "type": "custom",
+              "tokenizer": "lowercase"
+            },
+            "word_delimiter_analyzer": {
+              "filter": [
+                "word_delimiter_filter"
+              ],
+              "type": "custom",
+              "tokenizer": "standard"
+            }
+          }
+        },
+        "number_of_replicas": "1",
+        "uuid": "QlrKNwUCQNyTsicsq42mbQ",
+        "version": {
+          "created": "5050399"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "query": {
+    "bool": {
+      "minimum_should_match": 0,
+      "must": [{
+        "bool": {
+          "minimum_should_match": 1,
+          "should": [{
+            "match": {
+              "nickname": {
+                "operator": "And",
+                "query": "rebecca"
+              }
+            }
+          }, {
+            "match": {
+              "uniq_id": {
+                "operator": "And",
+                "query": "rebecca"
+              }
+            }
+          }, {
+            "match_phrase": {
+              "nickname_terms": {
+                "query": "r e b e c c a"
+              }
+            }
+          }]
+        }
+      }],
+      "should": [{
+        "match": {
+          "is_verified": {
+            "query": "true",
+            "boost": 20
+          }
+        }
+      }, {
+        "match": {
+          "enterprise_verify_reason": {
+            "query": 1,
+            "boost": 20
+          }
+        }
+      }, {
+        "match": {
+          "is_star": {
+            "query": "true",
+            "boost": 20
+          }
+        }
+      }, {
+        "match": {
+          "uniq_id": {
+            "query": "rebecca",
+            "boost": 1000
+          }
+        }
+      }, {
+        "match": {
+          "nickname": {
+            "operator": "And",
+            "query": "rebecca",
+            "boost": 1.2
+          }
+        }
+      }]
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "function_score": {
+    "boost_mode": "sum",
+    "functions": [{
+      "field_value_factor": {
+        "factor": 0.2,
+        "field": "score_d",
+        "missing": 0
+      }
+    }, {
+      "filter": {
+        "term": {
+          "source_platform_id": 74
+        }
+      },
+      "weight": 1
+    }],
+    "query": {
+      "bool": {
+        "disable_coord": true,
+        "filter": [{
+          "term": {
+            "explicit": false
+          }
+        }, {
+          "terms": {
+            "countries": ["us", "unlimited"]
+          }
+        }, {
+          "term": {
+            "status": 1
+          }
+        }],
+        "must": {
+          "dis_max": {
+            "queries": [{
+              "match": {
+                "title": {
+                  "boost": 0.7,
+                  "query": "ed sheeran"
+                }
+              }
+            }, {
+              "match": {
+                "author": {
+                  "boost": 0.7,
+                  "query": "ed sheeran"
+                }
+              }
+            }]
+          }
+        }
+      }
+    },
+    "score_mode": "sum"
+  }
+}
