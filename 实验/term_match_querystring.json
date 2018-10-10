@@ -1,0 +1,81 @@
+在keyword类型字段上
+{
+  "query": {
+    "bool": {
+      "must": {
+        "term": {
+          "content": "fingerdance"
+        }
+      }
+    }
+  }
+}
+
+{
+  "query": {
+    "bool": {
+      "must": {
+        "match": {
+          "content": "fingerdance"
+        }
+      }
+    }
+  }
+}
+
+{
+  "query": {
+    "bool": {
+      "must": {
+        "query_string": {
+          "fields": [
+            "content"
+          ],
+          "query": "fingerdance"
+        }
+      }
+    }
+  }
+}
+
+以上三者在keyword类型字段上结果完全一致
+————————————————————————————————————————————————————————————
+在text类型字段上
+{
+  "query": {
+    "bool": {
+      "must": {
+        "term": {
+          "content_terms_lv1": "finger dance"
+        }
+      }
+    }
+  }
+}
+无结果
+{
+  "query": {
+    "bool": {
+      "must": {
+        "match": {
+          "content_terms_lv1": "finger dance"
+        }
+      }
+    }
+  }
+}
+{
+  "query": {
+    "bool": {
+      "must": {
+        "query_string": {
+          "fields": [
+            "content_terms_lv1"
+          ],
+          "query": "finger dance"
+        }
+      }
+    }
+  }
+}
+二者一致
