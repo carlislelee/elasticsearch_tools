@@ -1,0 +1,5 @@
+{
+    "sort" : [
+        { "week_score_i" : {"order" : "desc"}}
+    ]
+}

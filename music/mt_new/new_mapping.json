@@ -1,0 +1,120 @@
+{
+  "song": {
+    "date_detection": false,
+    "properties": {
+      "album": {
+        "type":"keyword"
+      },
+      "album_terms_lv1": {
+        "type": "text",
+        "@cut":"nlp|auto|0",
+        "@copy_from":"album",
+        "analyzer": "whitespace_analyzer",
+        "search_analyzer": "whitespace_analyzer"
+      },
+      "album_terms_lv2": {
+        "type": "text",
+        "@cut":"nlp|ngram|0",
+        "@copy_from":"album",
+        "analyzer": "whitespace_analyzer",
+        "search_analyzer": "whitespace_analyzer"
+      },
+      "author": {
+        "type":"keyword"
+      },
+      "author_terms_lv1": {
+        "type": "text",
+        "@cut":"nlp|auto|0",
+        "@copy_from":"author",
+        "analyzer": "whitespace_analyzer",
+        "search_analyzer": "whitespace_analyzer"
+      },
+      "author_terms_lv2": {
+        "type": "text",
+        "@cut":"nlp|ngram|0",
+        "@copy_from":"author",
+        "analyzer": "whitespace_analyzer",
+        "search_analyzer": "whitespace_analyzer"
+      },
+      "author_id": {
+        "type": "integer"
+      },
+      "countries": {
+        "type": "text",
+        "analyzer": "standard_analyzer"
+      },
+      "explicit": {
+        "type": "boolean"
+      },
+      "extra": {
+        "type": "keyword",
+        "index": false
+      },
+      "hot_i": {
+        "type": "integer",
+        "index": false
+      },
+      "id": {
+        "type": "long"
+      },
+      "isrc": {
+        "type": "text"
+      },
+      "label_id": {
+        "type": "long"
+      },
+      "labels": {
+        "type": "long"
+      },
+      "long_author": {
+        "type": "long"
+      },
+      "modify_time": {
+        "type": "long"
+      },
+      "score_d": {
+        "type": "integer",
+        "index": false
+      },
+      "search_weight": {
+        "properties": {
+          "user_count": {
+            "type": "long"
+          }
+        }
+      },
+      "song_id": {
+        "type": "long"
+      },
+      "source_platform_id": {
+        "type": "integer"
+      },
+      "source_platform_lable_id": {
+        "type": "keyword"
+      },
+      "source_uri": {
+        "type": "keyword"
+      },
+      "status": {
+        "type": "long"
+      },
+      "title": {
+        "type":"keyword"
+      },
+      "title_terms_lv1": {
+        "type": "text",
+        "@cut":"nlp|auto|0",
+        "@copy_from":"title",
+        "analyzer": "whitespace_analyzer",
+        "search_analyzer": "whitespace_analyzer"
+      },
+      "title_terms_lv2": {
+        "type": "text",
+        "@cut":"nlp|ngram|0",
+        "@copy_from":"title",
+        "analyzer": "whitespace_analyzer",
+        "search_analyzer": "whitespace_analyzer"
+      }
+    }
+  }
+}

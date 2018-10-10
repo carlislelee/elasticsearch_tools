@@ -1,0 +1,21 @@
+{
+  "_source": {
+    "include": ["content_terms_lv1", "content_terms_lv2"]
+  },
+  "query": {
+    "bool": {
+      "must": [{
+        "exists": {
+          "field": "content_terms_lv2"
+        }
+      }],
+      "should": [{
+        "match_all": {}
+      }]
+    }
+  },
+  "from": 0,
+  "size": 1000,
+  "sort": [],
+  "aggs": {}
+}

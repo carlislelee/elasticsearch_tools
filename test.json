@@ -1,41 +1,28 @@
 {
-  "index": {
-    "routing": {
-      "allocation": {
-        "include": {
-          "name": ""
-        },
-        "total_shards_per_node": "10"
-      }
-    },
-    "refresh_interval": "600s",
-    "number_of_shards": "10",
-    "analysis": {
+  "query": {
+    "bool": {
+      "minimum_should_match": 1,
       "filter": {
-        "edge_filter": {
-          "type": "edge_ngram",
-          "min_gram": "1",
-          "max_gram": "36"
+        "term": {
+          "status": 1
         }
       },
-      "analyzer": {
-        "normal_track_search": {
-          "filter": ["lowercase"],
-          "type": "custom",
-          "tokenizer": "standard"
-        },
-        "std_lower_analyzer": {
-          "filter": ["lowercase"],
-          "type": "custom",
-          "tokenizer": "standard"
-        },
-        "normal_track": {
-          "filter": ["lowercase", "edge_filter"],
-          "type": "custom",
-          "tokenizer": "standard"
+      "disable_coord": "true",
+      "should": [{
+        "term": {
+          "content": "fingerdance"
         }
-      }
-    },
-    "number_of_replicas": "1"
+      }, {
+        "term": {
+          "content": "finger dance"
+        }
+      }, {
+        "query_string": {
+          "minimum_should_match": "75%",
+          "fields": ["content_terms_lv1"],
+          "query": ""
+        }
+      }]
+    }
   }
 }

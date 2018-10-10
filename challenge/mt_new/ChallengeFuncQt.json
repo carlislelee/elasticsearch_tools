@@ -1,0 +1,42 @@
+{
+  "function_score": {
+    "query": {
+      "bool": {
+        "minimum_should_match": 1,
+        "should": [
+          {
+            "term": {
+              "content": "fingerdance"
+            }
+          },
+          {
+            "query_string": {
+              "minimum_should_match": "75%",
+              "fields": [
+                "content_terms_lv1"
+              ],
+              "query": "finger dance"
+            }
+          }
+        ]
+      }
+    },
+    "functions": [{
+      "field_value_factor": {
+        "factor": 16,
+        "field": "all_score_d",
+        "missing": 0,
+        "modifier": "sqrt"
+      }
+    }, {
+      "field_value_factor": {
+        "factor": 25,
+        "field": "week_score_d",
+        "missing": 0,
+        "modifier": "sqrt"
+      }
+    }],
+    "boost_mode": "sum",#query和func之间
+    "score_mode": "sum"#函数之间
+  }
+}

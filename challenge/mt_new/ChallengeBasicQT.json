@@ -1,0 +1,29 @@
+{
+  "query": {
+    "bool": {
+      "disable_coord": true,
+      "minimum_should_match": 1,
+      "filter": {
+        "term": {
+          "status": 1
+        }
+      },
+      "must":[],
+      "should": [{
+          "term": {
+            "content": "fingerdance"
+          }
+        },
+        {
+          "query_string": {
+            "minimum_should_match": "75%",
+            "fields": [
+              "content_terms_lv1"
+            ],
+            "query": "finger dance"
+          }
+        }
+      ]
+    }
+  }
+}

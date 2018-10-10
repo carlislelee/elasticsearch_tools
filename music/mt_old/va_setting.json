@@ -13,7 +13,6 @@
         "refresh_interval": "600s",
         "number_of_shards": "10",
         "provided_name": "ugc_index_aweme_i18n_music_v1",
-        "creation_date": "1532425677889",
         "analysis": {
           "filter": {
             "edge_filter": {
@@ -47,8 +46,6 @@
             }
           }
         },
-        "number_of_replicas": "5",
-        "uuid": "YPsQ3hHbROqzQOoXj03nng",
         "version": {
           "created": "5050399"
         }

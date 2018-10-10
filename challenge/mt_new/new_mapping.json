@@ -8,18 +8,23 @@
         "type": "long"
       },
       "content": {
-        "type": "text",
-        "analyzer": "normal2"
+        "type": "keyword"
       },
       "content_segment": {
         "type": "text",
-        "fields": {
-          "length": {
-            "type": "token_count",
-            "analyzer": "normal"
-          }
-        },
-        "analyzer": "normal"
+        "analyzer": "whitespace_analyzer"
+      },
+      "content_terms_lv1": {
+        "type": "text",
+        "@cut": "nlp|auto|0",
+        "@copy_from": "content",
+        "analyzer": "whitespace_analyzer"
+      },
+      "content_terms_lv2": {
+        "type": "text",
+        "@cut": "nlp|ngram|0",
+        "@copy_from": "content",
+        "analyzer": "whitespace_analyzer"
       },
       "create_time": {
         "type": "long"
@@ -35,7 +40,8 @@
       },
       "origin_content": {
         "type": "text",
-        "analyzer": "normal2"
+        "@copy_from": "content",
+        "analyzer": "edge_analyzer"
       },
       "status": {
         "type": "long"
@@ -44,6 +50,7 @@
         "type": "text"
       },
       "update_time": {
+        "check":"false",
         "type": "long"
       },
       "user_id": {

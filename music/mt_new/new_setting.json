@@ -43,6 +43,13 @@
           "type": "custom",
           "tokenizer": "standard"
         },
+        "standard_analyzer": {
+          "filter": [
+            "lowercase"
+          ],
+          "type": "custom",
+          "tokenizer": "standard"
+        },
         "edge_analyzer": {
           "filter": [
             "lowercase"

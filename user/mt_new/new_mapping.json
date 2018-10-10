@@ -46,7 +46,7 @@
       },
       "nickname_terms_lv2": {
         "type": "text",
-        "@cut": "nlp|mix|0",
+        "@cut": "nlp|ngram|0",
         "@copy_from": "nickname",
         "analyzer": "whitespace_analyzer",
         "search_analyzer": "whitespace_analyzer"
@@ -75,7 +75,7 @@
       },
       "uniq_id_terms_lv2": {
         "type": "text",
-        "@cut": "nlp|max|0",
+        "@cut": "nlp|ngram|0",
         "@copy_from": "uniq_id",
         "analyzer": "whitespace_analyzer",
         "search_analyzer": "whitespace_analyzer"

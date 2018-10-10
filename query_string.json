@@ -1,0 +1,15 @@
+{
+  "query": {
+    "bool": {
+      "disable_coord": true,
+      "must": {
+        "query_string": {
+          "fields": [
+            "content"
+          ],
+          "query": "finger dance"
+        }
+      }
+    }
+  }
+}
