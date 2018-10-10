@@ -3,43 +3,64 @@
     "function_score": {
       "query": {
         "bool": {
-          "minimum_should_match": 1,
-          "should": [{
+          "minimum_should_match": 2,
+          "should": [
+            {
               "match": {
                 "content": {
                   "boost": 1.5,
-                  "query": "fingerdance"
+                  "query": "haircolor"
                 }
               }
             },
             {
-              "query_string": {
-                "minimum_should_match": "75%",
-                "fields": [
-                  "content_terms_lv1"
-                ],
-                "query": "finger dance",
-                "boost": 0.8
+              "constant_score": {
+                "boost": 8,
+                "query": {
+                  "query_string": {
+                    "fields": [
+                      "content_terms_lv1"
+                    ],
+                    "query": "hair color"
+                  }
+                }
+              }
+            },
+            {
+              "constant_score": {
+                "boost": 4,
+                "query": {
+                  "query_string": {
+                    "minimum_should_match": "75%",
+                    "fields": [
+                      "content_terms_lv1"
+                    ],
+                    "query": "+hair +color challenge"
+                  }
+                }
               }
             }
           ]
         }
       },
-      "functions": [{
-        "field_value_factor": {
-          "factor": 16,
-          "field": "all_score_d",
-          "modifier": "sqrt",
-          "missing": 0
+      "functions": [
+        {
+          "field_value_factor": {
+            "factor": 16,
+            "field": "all_score_d",
+            "modifier": "sqrt",
+            "missing": 0
+          }
+        },
+        {
+          "field_value_factor": {
+            "factor": 25,
+            "field": "week_score_d",
+            "modifier": "sqrt",
+            "missing": 0
+          }
         }
-      }, {
-        "field_value_factor": {
-          "factor": 25,
-          "field": "week_score_d",
-          "modifier": "sqrt",
-          "missing": 0
-        }
-      }],
+      ],
       "boost_mode": "sum",
       "score_mode": "sum"
     }
