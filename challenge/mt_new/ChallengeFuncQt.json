@@ -3,6 +3,11 @@
     "function_score": {
       "query": {
         "bool": {
+          "filter": {
+            "term": {
+              "status": 1
+            }
+          },
           "minimum_should_match": 2,
           "should": [
             {

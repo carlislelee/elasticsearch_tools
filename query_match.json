@@ -1,0 +1,12 @@
+{
+  "query": {
+    "bool": {
+      "disable_coord": true,
+      "must": {
+        "match": {
+          "origin_content": "a"
+        }
+      }
+    }
+  }
+}

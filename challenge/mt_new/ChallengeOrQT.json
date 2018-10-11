@@ -3,54 +3,40 @@
     "function_score": {
       "query": {
         "bool": {
-          "minimum_should_match": 0,
-          "should": [
-            {
-              "match": {
-                "content": {
-                  "boost": 1.5,
-                  "query": "fingerdance"
-                }
-              }
-            },
-            {
-              "query_string": {
-                "minimum_should_match": "75%",
-                "fields": [
-                  "content_terms_lv1"
-                ],
-                "query": "+finger +dance challenge",
-                "boost": 0.8
-              }
-            },
-            {
-              "query_string": {
-                "minimum_should_match": "75%",
-                "fields": [
-                  "content_terms_lv2"
-                ],
-                "query": "fin ing ger dan anc nce",
-                "boost": 0.3
-              }
+          "filter": {
+            "term": {
+              "status": 1
             }
-          ]
+          },
+          "minimum_should_match": 0,
+          "should": [{
+            "query_string": {
+              "minimum_should_match": "90%",
+              "fields": [
+                "content_terms_lv2"
+              ],
+              "query": "hai air col olo lor"
+            }
+          }]
         }
       },
       "functions": [{
-        "field_value_factor": {
-          "factor": 16,
-          "field": "all_score_d",
-          "modifier": "sqrt",
-          "missing": 0
+          "field_value_factor": {
+            "factor": 16,
+            "field": "all_score_d",
+            "modifier": "sqrt",
+            "missing": 0
+          }
+        },
+        {
+          "field_value_factor": {
+            "factor": 25,
+            "field": "week_score_d",
+            "modifier": "sqrt",
+            "missing": 0
+          }
         }
-      }, {
-        "field_value_factor": {
-          "factor": 25,
-          "field": "week_score_d",
-          "modifier": "sqrt",
-          "missing": 0
-        }
-      }],
+      ],
       "boost_mode": "sum",
       "score_mode": "sum"
     }
