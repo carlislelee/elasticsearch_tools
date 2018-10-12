@@ -1,0 +1,14 @@
+{
+  "query": {
+    "bool": {
+      "disable_coord": true,
+      "must": [{
+        "range": {
+          "antispam_credit":{
+            "lt":0
+          }
+        }
+      }]
+    }
+  }
+}
