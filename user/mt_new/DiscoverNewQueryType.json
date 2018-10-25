@@ -3,22 +3,18 @@
         "function_score": {
             "query": {
                 "bool": {
-                    "minimum_should_match": 2,
                     "filter": [{
                         "term": {
                             "status": 1
                         }
-                    }, {
-                        "exists": {
-                            "field": "uniq_id"
-                        }
                     }],
+                    "minimum_should_match": 1,
                     "disable_coord": "true",
                     "should": [{
                         "constant_score": {
                             "query": {
                                 "match": {
-                                    "uniq_id": "\u3072\u3081\u305f\u3074"
+                                    "uniq_id": "oreocat"
                                 }
                             },
                             "boost": 100
@@ -27,32 +23,47 @@
                         "constant_score": {
                             "query": {
                                 "query_string": {
-                                    "minimum_should_match": "80%",
-                                    "fields": ["uniq_id_terms_lv2"],
-                                    "query": "\u3072\u3081 \u3081\u305f \u305f\u3074"
+                                    "fields": ["uniq_id_terms_lv1"],
+                                    "query": "oreo cat"
                                 }
                             },
-                            "boost": 3
+                            "boost": 10
                         }
                     }, {
                         "constant_score": {
                             "query": {
                                 "query_string": {
-                                    "minimum_should_match": "60%",
-                                    "fields": ["nickname_terms_lv2"],
-                                    "query": "\u3072\u3081 \u3081\u305f \u305f\u3074"
+                                    "fields": ["nickname_terms_lv1"],
+                                    "query": "oreo cat"
                                 }
                             },
-                            "boost": 2
+                            "boost": 6
                         }
                     }, {
                         "constant_score": {
                             "query": {
                                 "match": {
-                                    "country": "JP"
+                                    "country": "US"
                                 }
                             },
-                            "boost": 1
+                            "boost": 2
+                        }
+                    }],
+                    "must": [{
+                        "multi_match": {
+                            "tie_breaker": 0.3,
+                            "query": "ore reo eoc oca cat",
+                            "type": "best_fields",
+                            "fields": ["uniq_id_terms_lv2", "nickname_terms_lv2"]
+                        }
+                    }, {
+                        "constant_score": {
+                            "query": {
+                                "term": {
+                                    "app_id": 1233
+                                }
+                            },
+                            "boost": 0.000001
                         }
                     }]
                 }
@@ -60,27 +71,27 @@
             "functions": [{
                 "field_value_factor": {
                     "field": "fans_score_d",
-                    "factor": 3,
-                    "missing": 0
+                    "missing": 0,
+                    "factor": 20
                 }
             }, {
                 "field_value_factor": {
                     "field": "weight.is_auth",
-                    "factor": 2,
-                    "missing": 0
+                    "missing": 0,
+                    "factor": 2
                 }
             }, {
                 "field_value_factor": {
                     "field": "weight.post_count",
                     "modifier": "log1p",
-                    "factor": 0.0001,
-                    "missing": 0
+                    "missing": 0,
+                    "factor": 0.0001
                 }
             }, {
                 "field_value_factor": {
                     "field": "porn_credit",
-                    "factor": 0.05,
-                    "missing": 0
+                    "missing": 0,
+                    "factor": 0.05
                 }
             }],
             "score_mode": "sum",

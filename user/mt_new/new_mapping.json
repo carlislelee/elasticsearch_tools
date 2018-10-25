@@ -51,6 +51,11 @@
         "analyzer": "whitespace_analyzer",
         "search_analyzer": "whitespace_analyzer"
       },
+      "nickname_terms_edge": {
+        "type": "text",
+        "analyzer": "edge_ngram_analyzer",
+        "search_analyzer": "simple"
+      },
       "porn_credit": {
         "type": "double"
       },
@@ -77,8 +82,14 @@
         "type": "text",
         "@cut": "nlp|ngram|0",
         "@copy_from": "uniq_id",
-        "analyzer": "whitespace_analyzer",
+        "analyzer": "edge_ngram_analyzer",
         "search_analyzer": "whitespace_analyzer"
+      },
+      "uniq_id_terms_edge": {
+        "type": "text",
+        "@copy_from": "uniq_id",
+        "analyzer": "edge_ngram_analyzer",
+        "search_analyzer": "simple"
       },
       "weight": {
         "properties": {

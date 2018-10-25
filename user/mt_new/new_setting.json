@@ -18,6 +18,11 @@
           "generate_word_parts": "true",
           "type": "word_delimiter",
           "generate_number_parts": "true"
+        },
+        "edge_ngram_filter": {
+          "type": "edge_ngram",
+          "min_gram": "1",
+          "max_gram": "16"
         }
       },
       "analyzer": {
@@ -34,6 +39,13 @@
           ],
           "type": "custom",
           "tokenizer": "standard"
+        },
+        "edge_ngram_analyzer": {
+          "filter": [
+            "edge_ngram_filter"
+          ],
+          "type": "custom",
+          "tokenizer": "lowercase"
         }
       }
     },

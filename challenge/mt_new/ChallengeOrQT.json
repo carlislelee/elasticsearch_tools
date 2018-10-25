@@ -31,7 +31,7 @@
         {
           "field_value_factor": {
             "factor": 25,
-            "field": "week_score_d",
+            "field": "week_score_d",:
             "modifier": "sqrt",
             "missing": 0
           }

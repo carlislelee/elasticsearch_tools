@@ -5,6 +5,12 @@
       "album": {
         "type":"keyword"
       },
+      "album_edge": {
+        "type": "text",
+        "@copy_from":"album",
+        "analyzer": "edge_analyzer",
+        "search_analyzer": "std_analyzer"
+      },
       "album_terms_lv1": {
         "type": "text",
         "@cut":"nlp|auto|0",
@@ -21,6 +27,12 @@
       },
       "author": {
         "type":"keyword"
+      },
+      "author_edge": {
+        "type": "text",
+        "@copy_from":"author",
+        "analyzer": "edge_analyzer",
+        "search_analyzer": "std_analyzer"
       },
       "author_terms_lv1": {
         "type": "text",
@@ -41,7 +53,7 @@
       },
       "countries": {
         "type": "text",
-        "analyzer": "standard_analyzer"
+        "analyzer": "std_analyzer"
       },
       "explicit": {
         "type": "boolean"
@@ -100,6 +112,12 @@
       },
       "title": {
         "type":"keyword"
+      },
+      "title_edge": {
+        "type": "text",
+        "@copy_from":"title",
+        "analyzer": "edge_analyzer",
+        "search_analyzer": "std_analyzer"
       },
       "title_terms_lv1": {
         "type": "text",

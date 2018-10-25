@@ -1,113 +1,95 @@
 {
-  "query": {
-    "function_score": {
-      "query": {
-        "bool": {
-          "minimum_should_match": 3,
-          "filter": [{
-              "term": {
-                "status": 1
-              }
-            },
-            {
-              "exists": {
-                "field": "uniq_id"
-              }
-            }
-          ],
-          "disable_coord": "true",
-          "should": [{
-              "constant_score": {
-                "query": {
-                  "match": {
-                    "uniq_id": "rebecca"
-                  }
-                },
-                "boost": 20
-              }
-            },
-            {
-              "constant_score": {
-                "query": {
-                  "match": {
-                    "uniq_id_terms_lv1": "rebecca"
-                  }
-                },
-                "boost": 8
-              }
-            },
-            {
-              "constant_score": {
-                "query": {
-                  "match": {
-                    "nickname": "rebecca"
-                  }
-                },
-                "boost": 6
-              }
-            },
-            {
-              "constant_score": {
-                "query": {
-                  "match": {
-                    "nickname_terms_lv1": "rebecca"
-                  }
-                },
-                "boost": 5
-              }
-            },
-            {
-              "constant_score": {
-                "query": {
-                  "match": {
-                    "country": "US"
-                  }
-                },
-                "boost": 1
-              }
-            },
-            {
-              "range": {
-                "fans_score_d": {
-                  "gt": 1
+    "query": {
+        "function_score": {
+            "query": {
+                "bool": {
+                    "filter": [{
+                        "term": {
+                            "status": 1
+                        }
+                    }, {
+                        "exists": {
+                            "field": "uniq_id"
+                        }
+                    }],
+                    "should": [{
+                        "constant_score": {
+                            "query": {
+                                "match": {
+                                    "uniq_id": "albert"
+                                }
+                            },
+                            "boost": 100
+                        }
+                    }, {
+                        "constant_score": {
+                            "query": {
+                                "match": {
+                                    "nickname": "albert"
+                                }
+                            },
+                            "boost": 5
+                        }
+                    }, {
+                        "constant_score": {
+                            "query": {
+                                "match": {
+                                    "country": "CN"
+                                }
+                            },
+                            "boost": 1
+                        }
+                    }],
+                    "disable_coord": "true",
+                    "must": {
+                        "dis_max": {
+                            "queries": [{
+                                "match": {
+                                    "uniq_id_terms_lv1": {
+                                        "query": "albert",
+                                        "boost": 1
+                                    }
+                                }
+                            }, {
+                                "match": {
+                                    "nickname_terms_lv1": {
+                                        "query": "albert",
+                                        "boost": 1
+                                    }
+                                }
+                            }]
+                        }
+                    }
                 }
-              }
-            }
-          ]
+            },
+            "functions": [{
+                "field_value_factor": {
+                    "field": "fans_score_d",
+                    "factor": 10,
+                    "missing": 0
+                }
+            }, {
+                "field_value_factor": {
+                    "field": "weight.is_auth",
+                    "factor": 2,
+                    "missing": 0
+                }
+            }, {
+                "field_value_factor": {
+                    "field": "weight.post_count",
+                    "modifier": "log1p",
+                    "factor": 0.0001,
+                    "missing": 0
+                }
+            }, {
+                "field_value_factor": {
+                    "field": "porn_credit",
+                    "factor": 0.05,
+                    "missing": 0
+                }
+            }],
+            "score_mode": "sum",
+            "boost_mode": "sum"
         }
-      },
-      "functions": [{
-          "field_value_factor": {
-            "field": "fans_score_d",
-            "missing": 0,
-            "factor": 10
-          }
-        },
-        {
-          "field_value_factor": {
-            "field": "weight.is_auth",
-            "missing": 0,
-            "factor": 2
-          }
-        },
-        {
-          "field_value_factor": {
-            "field": "weight.post_count",
-            "modifier": "log1p",
-            "missing": 0,
-            "factor": 0.0001
-          }
-        },
-        {
-          "field_value_factor": {
-            "field": "porn_credit",
-            "missing": 0,
-            "factor": 0.05
-          }
-        }
-      ],
-      "score_mode": "sum",
-      "boost_mode": "sum"
     }
-  }
 }
