@@ -1,0 +1,116 @@
+{
+  "user": {
+    "properties": {
+      "antispam_credit": {
+        "type": "double"
+      },
+      "app_id": {
+        "type": "long"
+      },
+      "country": {
+        "type": "keyword"
+      },
+      "create_time": {
+        "type": "keyword"
+      },
+      "extra": {
+        "type": "text"
+      },
+      "fans_score_d": {
+        "type": "double"
+      },
+      "following_lt": {
+        "type": "text",
+        "analyzer": "word_delimiter_analyzer"
+      },
+      "friends_lt": {
+        "type": "text",
+        "analyzer": "word_delimiter_analyzer"
+      },
+      "id": {
+        "type": "long"
+      },
+      "may_be_friends_lt": {
+        "type": "text",
+        "analyzer": "word_delimiter_analyzer"
+      },
+      "nickname": {
+        "type": "keyword"
+      },
+      "nickname_terms_lv1": {
+        "type": "text",
+        "@cut": "nlp|auto|0",
+        "@copy_from": "nickname",
+        "analyzer": "whitespace_analyzer",
+        "search_analyzer": "whitespace_analyzer"
+      },
+      "nickname_terms_lv2": {
+        "type": "text",
+        "@cut": "nlp|ngram|0",
+        "@copy_from": "nickname",
+        "analyzer": "whitespace_analyzer",
+        "search_analyzer": "whitespace_analyzer"
+      },
+      "nickname_terms_edge": {
+        "type": "text",
+        "@copy_from":"nickname",
+        "analyzer": "edge_ngram_analyzer",
+        "search_analyzer": "simple"
+      },
+      "porn_credit": {
+        "type": "double"
+      },
+      "short_id": {
+        "type": "long"
+      },
+      "status": {
+        "type": "long"
+      },
+      "telephone": {
+        "type": "keyword"
+      },
+      "uniq_id": {
+        "type": "keyword"
+      },
+      "uniq_id_terms_lv1": {
+        "type": "text",
+        "@cut": "nlp|auto|0",
+        "@copy_from": "uniq_id",
+        "analyzer": "whitespace_analyzer",
+        "search_analyzer": "whitespace_analyzer"
+      },
+      "uniq_id_terms_lv2": {
+        "type": "text",
+        "@cut": "nlp|ngram|0",
+        "@copy_from": "uniq_id",
+        "analyzer": "edge_ngram_analyzer",
+        "search_analyzer": "whitespace_analyzer"
+      },
+      "uniq_id_terms_edge": {
+        "type": "text",
+        "@copy_from": "uniq_id",
+        "analyzer": "edge_ngram_analyzer",
+        "search_analyzer": "simple"
+      },
+      "weight": {
+        "properties": {
+          "following_count": {
+            "type": "long"
+          },
+          "follower_count": {
+            "type": "long"
+          },
+          "is_auth": {
+            "type": "boolean"
+          },
+          "is_star": {
+            "type": "boolean"
+          },
+          "post_count": {
+            "type": "long"
+          }
+        }
+      }
+    }
+  }
+}

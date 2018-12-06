@@ -1,67 +1,77 @@
 {
-  "challenge": {
-    "properties": {
-      "all_score_d": {
-        "type": "double"
-      },
-      "all_score_i": {
-        "type": "long"
-      },
-      "content": {
-        "type": "keyword"
-      },
-      "content_segment": {
-        "type": "text",
-        "analyzer": "whitespace_analyzer"
-      },
-      "content_terms_lv1": {
-        "type": "text",
-        "@cut": "nlp|auto|0",
-        "@copy_from": "content",
-        "analyzer": "whitespace_analyzer"
-      },
-      "content_terms_lv2": {
-        "type": "text",
-        "@cut": "nlp|ngram|0",
-        "@copy_from": "content",
-        "analyzer": "whitespace_analyzer"
-      },
-      "create_time": {
-        "type": "long"
-      },
-      "desc": {
-        "type": "text"
-      },
-      "extra": {
-        "type": "keyword"
-      },
-      "id": {
-        "type": "long"
-      },
-      "origin_content": {
-        "type": "text",
-        "@copy_from": "content",
-        "analyzer": "edge_analyzer"
-      },
-      "status": {
-        "type": "long"
-      },
-      "tag": {
-        "type": "text"
-      },
-      "update_time": {
-        "check":"false",
-        "type": "long"
-      },
-      "user_id": {
-        "type": "long"
-      },
-      "week_score_d": {
-        "type": "double"
-      },
-      "week_score_i": {
-        "type": "long"
-      }
+    "challenge": {
+        "properties": {
+            "all_score_d": {
+                "type": "double"
+            },
+            "all_score_i": {
+                "type": "long"
+            },
+            "content": {
+                "type": "keyword"
+            },
+            "content_segment": {
+                "type": "text",
+                "analyzer": "whitespace_analyzer"
+            },
+            "content_terms_edge": {
+                "type": "text",
+                "@copy_from": "content",
+                "analyzer": "edge_analyzer"
+            },
+            "content_terms_lv1": {
+                "type": "text",
+                "@cut": "nlp|auto|0",
+                "@copy_from": "content",
+                "analyzer": "whitespace_analyzer"
+            },
+            "content_bigram": {
+                "type": "text",
+                "@cut": "nlp|ngram|0",
+                "@copy_from": "content",
+                "analyzer": "whitespace_analyzer"
+            },
+            "content_trigram": {
+                "type": "text",
+                "@cut": "nlp|ngram|0",
+                "@copy_from": "content",
+                "analyzer": "whitespace_analyzer"
+            },
+            "create_time": {
+                "type": "long"
+            },
+            "desc": {
+                "type": "text"
+            },
+            "extra": {
+                "type": "keyword"
+            },
+            "id": {
+                "type": "long"
+            },
+            "origin_content": {
+                "type": "text",
+                "@copy_from": "content",
+                "analyzer": "edge_t_analyzer"
+            },
+            "status": {
+                "type": "long"
+            },
+            "tag": {
+                "type": "text"
+            },
+            "update_time": {
+                "type": "text"
+            },
+            "user_id": {
+                "type": "long"
+            },
+            "week_score_d": {
+                "type": "double"
+            },
+            "week_score_i": {
+                "type": "long"
+            }
+        }
     }
-  }
 }

@@ -44,15 +44,23 @@
         "analyzer": "whitespace_analyzer",
         "search_analyzer": "whitespace_analyzer"
       },
-      "nickname_terms_lv2": {
+      "nickname_bigram": {
         "type": "text",
-        "@cut": "nlp|ngram|0",
+        "@cut": "nlp|bigram|0",
+        "@copy_from": "nickname",
+        "analyzer": "whitespace_analyzer",
+        "search_analyzer": "whitespace_analyzer"
+      },
+      "nickname_trigram": {
+        "type": "text",
+        "@cut": "nlp|trigram|0",
         "@copy_from": "nickname",
         "analyzer": "whitespace_analyzer",
         "search_analyzer": "whitespace_analyzer"
       },
       "nickname_terms_edge": {
         "type": "text",
+        "@copy_from":"nickname",
         "analyzer": "edge_ngram_analyzer",
         "search_analyzer": "simple"
       },
@@ -78,11 +86,18 @@
         "analyzer": "whitespace_analyzer",
         "search_analyzer": "whitespace_analyzer"
       },
-      "uniq_id_terms_lv2": {
+      "uniq_id_bigram": {
         "type": "text",
-        "@cut": "nlp|ngram|0",
+        "@cut": "nlp|bigram|0",
         "@copy_from": "uniq_id",
-        "analyzer": "edge_ngram_analyzer",
+        "analyzer": "whitespace_analyzer",
+        "search_analyzer": "whitespace_analyzer"
+      },
+      "uniq_id_trigram": {
+        "type": "text",
+        "@cut": "nlp|trigram|0",
+        "@copy_from": "uniq_id",
+        "analyzer": "whitespace_analyzer",
         "search_analyzer": "whitespace_analyzer"
       },
       "uniq_id_terms_edge": {

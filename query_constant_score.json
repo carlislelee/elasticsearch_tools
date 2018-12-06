@@ -1,0 +1,11 @@
+{
+    "query": {
+        "bool": {
+            "must": {
+                        "match_phrase": {
+                            "uniq_id_terms_lv2": "l lea"
+                        }
+            }
+        }
+    }
+}
